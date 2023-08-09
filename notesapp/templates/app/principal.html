@@ -1,0 +1,184 @@
+{%load static%}
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  {% load pwa %}
+  {% load bootstrap_icons %}
+  {% progressive_web_app_meta %}
+  <link rel="stylesheet" href='{% static "css/mdb.min.css" %}'>
+  <script src='{% static "js/mdb.min.js" %}'></script>
+</head>
+
+<body>
+  <!--Main Navigation-->
+  <header>
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+          <a href="{% url 'prueva' %}" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+       
+            {% bs_icon 'bicycle' %}&nbsp; <span>Deportes</span>
+          </a>
+          <a href="{% url 'ajustes' %}" class="list-group-item list-group-item-action py-2 ripple ">
+            {% bs_icon 'house-heart' %}&nbsp; <span>Hogar</span>
+          </a>
+          <a href="{% url 'ajustes' %}" class="list-group-item list-group-item-action py-2 ripple ">
+            {% bs_icon 'book-half' %}&nbsp;<span>Escuela</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+            {% bs_icon 'person-workspace' %}&nbsp;<span>Trabajo</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+            {% bs_icon 'bank2' %}&nbsp;<span>Finansas</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Sidebar -->
+
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+          aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          {% bs_icon 'list' %}
+        </button>
+
+
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+          <!-- Notification dropdown -->
+
+
+          <!-- Icon -->
+          <li class="nav-item">
+            <a class="nav-link me-3 me-lg-0" href="#">
+              <i class="fas fa-fill-drip"></i>
+            </a>
+          </li>
+          <!-- Icon -->
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="#">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <!--Button of New Homword-->
+          <button type="button" class="btn btn-light mb-2" data-mdb-toggle="modal"
+            data-mdb-target="#exampleCentralModal4">
+            {% bs_icon 'file-earmark-plus-fill' %} &nbsp; Add Tarea
+          </button>
+          <!-- Icon dropdown 
+          <li class="nav-item dropdown">
+            <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              {% bs_icon 'file-earmark-plus-fill' %}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="#">{% bs_icon 'plus-circle-fill' %} &nbsp; Nueva Tarea</a>
+              </li>
+
+            </ul>
+          </li>-->
+
+          <!-- Avatar -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+              id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <img style="width:2.5em; height: 2.5em;" src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
+                class="rounded-circle" height="22" alt="" loading="lazy" />
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">My profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main style="margin-top: 58px">
+    <!-- exampleCentralModal4 -->
+    <div class="modal fade" id="exampleCentralModal4" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Nueva Nota</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <form method="POST" >
+              {% csrf_token %}
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row mb-4">
+                <div class="col">
+                  <div class="form-outline">
+                    <label class="form-label" for="form6Example1">Numero de tarea</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text input -->
+              <div class="form-outline mb-4">
+                <label for="validationCustom04" class="form-label">Area de actividad</label>
+                <select class="form-select" id="validationCustom04" name="ceccion" required name="sect">
+                  <option selected disabled value="">Choose...</option>
+                  <option>Deporte</option>
+                  <option>Estudio</option>
+                  <option>Hogar</option>
+                  <option>Trabajo</option>
+                  <option>Finansas</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <!-- Text input -->
+              <div class="form-outline mb-4">
+                <input type="text" name="titulo" id="form6Example3" class="form-control" name="name" />
+                <label class="form-label" for="form6Example3">Nombre de tarea</label>
+              </div>
+
+              <!-- Message input -->
+              <div class="form-outline mb-4">
+                <textarea class="form-control" name="nota" id="form6Example7" rows="4" name="Desc"></textarea>
+                <label class="form-label" for="form6Example7">Seccion de nota(seccion para describir tu tarea)</label>
+              </div>
+              <!-- lista de videos -->
+              <div class="form-outline mb-4">
+                <ul>
+                  <li>
+                    <i><input name="link" type="text" placeholder="Hola mundo"></i>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit"  class="btn btn-primary btn-block">Guardar Tarea</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- exampleCentralModal4 -->
+    {% block content %}{% endblock %}
+  </main>
+  <!--Main layout-->
+</body>
+
+</html>

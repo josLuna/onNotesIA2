@@ -1,0 +1,98 @@
+{% extends "app/principal.html" %}
+{% load bootstrap_icons %}
+{% block title %} deportes {% endblock %}
+{% block content %}
+<br>
+<h1>Deporte</h1>
+   <!-- exampleCentralModal4 -->
+    <div class="modal fade" id="exampleCentralModal4" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Nueva Nota</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <form method="POST" >
+              {% csrf_token %}
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row mb-4">
+                <div class="col">
+                  <div class="form-outline">
+                    <label class="form-label" for="form6Example1">Numero de tarea</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text input -->
+              <div class="form-outline mb-4">
+                <label for="validationCustom04" class="form-label">Area de actividad</label>
+                <select class="form-select" id="validationCustom04" required name="sect">
+                  <option selected disabled value="">Choose...</option>
+                  <option>Deporte</option>
+                  <option>Estudio</option>
+                  <option>Hogar</option>
+                  <option>Trabajo</option>
+                  <option>Finansas</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <!-- Text input -->
+              <div class="form-outline mb-4">
+                <input type="text" id="form6Example3" class="form-control" name="noame" />
+                <label class="form-label" for="form6Example3">Nombre de nota</label>
+              </div>
+
+              <!-- Message input -->
+              <div class="form-outline mb-4">
+                <textarea class="form-control" id="form6Example7" rows="4" name="Desc"></textarea>
+                <label class="form-label" for="form6Example7">Seccion de nota(seccion para describir tu tarea)</label>
+              </div>
+              <!-- lista de videos -->
+              <div class="form-outline mb-4">
+                <ul>
+                  <li>
+                    <i><a href="#">hola mundo</a></i>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block">Guardar Tarea</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="container pt-4">
+
+  <div class="card text-center">
+    <div class="card-header" style="background: #66339940;">
+      Titulo de Tarea
+    </div>
+    <div class="card-body" style="display: flex; justify-content: space-evenly;">
+      <div class="ratio ratio-21x9" style="width: 57% !important;">
+        
+
+      </div>
+
+      <!--<button type="button" class="btn btn-default">
+      <svg class="bi" width="24" height="24">{% bs_icon 'star' %}</svg> Favotiros
+    </button>-->
+    </div>
+    <div class="card-footer text-body-secondary">
+      Fecha limite para la metas
+      <input type="date" name="" id="">
+      <button type="button" class="btn btn-default">
+        <svg class="bi" width="24" height="24">{% bs_icon 'trash2-fill' %}</svg> Eliminar
+      </button>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

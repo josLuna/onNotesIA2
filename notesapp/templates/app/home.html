@@ -1,0 +1,179 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href='{% static "css/caso.css" %}'>
+  {% load pwa %}
+  {% progressive_web_app_meta %}
+  <style>
+    .color2 {
+      background: linear-gradient(100deg, #4d0d91 0, #40038c 50%, #310087 100%);
+    }
+
+    .slider {
+      /* background: url("../img/Chivacola.jpg"); */
+      /* Ocupara toda la altura disponible */
+      height: 90.5vh;
+      /* La imagen de adapte al tamaño del despoditivo */
+      background-size: cover;
+      /* La imagen estara centrada */
+      background-position: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand active" style="border-bottom: 3px solid rebeccapurple; border-radius: 1px;"
+          href="{% url 'index' %}">OnNotes</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Ajustes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'comida' %}">Registro</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Sobre nosotros
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Empresa</a></li>
+                <li><a class="dropdown-item" href="#">Direccion</a></li>
+                <li><a class="dropdown-item" href="#">Contactos</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#"></a></li>
+              </ul>
+            </li>
+            <!--<li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                  </li>-->
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+
+    <div class="row ">
+
+      <div class="col-6 r1">
+        <form style=" 
+          padding: 11px 25px;
+          /*border: rgb(55 58 61 / 49%) 2px solid;*/
+          border-radius: 23px;
+          margin-top: 20%;
+          margin-left: 1%;
+          " method="POST">
+          {% csrf_token %}
+          <div class="espacio">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email</label>
+              <input type="email" style="border: var(--bs-border-width) solid #89a29d;" name="email"
+                class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie
+                más.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" style="border: var(--bs-border-width) solid #89a29d;" name="password"
+                class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <br>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Recordar contraseña</label>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary btn-sm">Login</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="col-6 color2 d-flex justify-content-center align-items-center slider">
+        <!-- Imagen fija no crece ni disminuye -->
+        <!-- <img src="../img/palomitas.jpg" width="100px" height="100px" alt=""> -->
+        <!-- Imagen crece y disminuye conforme sea la pantalla de grande -->
+        <img src="{% static 'images/bloc-de-notas2.png' %}" style="width: 45%; height: 45%;" alt="My image">
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <div class="cuerpo" style="display: flex; flex-wrap: wrap;  justify-content: center; padding-top: 12%;">
+    <form style=" 
+      width: 70%;
+      padding: 11px 25px;
+      border: rgb(55 58 61 / 49%) 2px solid;
+      border-radius: 23px;
+      ">
+      <section class="le">
+        <div class="espacio">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary btn-sm">Login</button>
+        </div>
+    </form>
+    </section>
+    <br>
+    <section class="ri">
+      <div class="espacio">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-sm">Login</button>
+      </div>
+  </form>
+  </section>
+  </div>-->
+
+
+</body>
+
+</html>
